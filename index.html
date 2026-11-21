@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b3a5b">
+<title>מדריך חיפה · Haifa Guide</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap">
+<style>
+:root{
+  --deep:#0b3a5b; --deep2:#0f4c75; --turq:#19b3b1; --turq-l:#d8f3f2; --carmel:#4f8a3b; --carmel-l:#e5f1df;
+  --coral:#e2774a; --sand:#f6f1e7; --bg:#f3f8fb; --card:#fff; --ink:#14283a; --muted:#5e7385; --line:#e1eaf0;
+  --c-attractions:#0f6fae; --c-restaurants:#e2774a; --c-free:#4f8a3b; --c-events:#13a3a0;
+  --r:18px; --shadow:0 6px 22px rgba(11,58,91,.10);
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow-x:hidden}
+body{font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+a{color:inherit}
+.hidden{display:none!important}
+
+/* ---------- Language splash ---------- */
+#splash{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:linear-gradient(165deg,#0b3a5b 0%,#0f5f86 45%,#19b3b1 100%);color:#fff;overflow:hidden}
+#splash .waves{position:absolute;inset:auto 0 0 0;height:38%;opacity:.25}
+.splash-box{position:relative;width:100%;max-width:380px;text-align:center}
+.splash-logo{width:84px;height:84px;margin:0 auto 18px;border-radius:26px;background:rgba(255,255,255,.14);display:grid;place-items:center;font-size:44px;backdrop-filter:blur(6px)}
+.splash-box h1{margin:0 0 6px;font-size:30px;font-weight:800;letter-spacing:-.3px}
+.splash-box p{margin:0 0 28px;opacity:.85}
+.lang-btn{display:flex;align-items:center;gap:14px;width:100%;padding:16px 18px;margin-bottom:12px;border-radius:16px;
+  background:rgba(255,255,255,.96);color:var(--deep);font-weight:700;font-size:17px;box-shadow:0 8px 24px rgba(0,0,0,.15);transition:transform .15s}
+.lang-btn:active{transform:scale(.98)}
+.lang-btn .flag{font-size:24px}
+.lang-btn small{margin-inline-start:auto;color:var(--muted);font-weight:500;font-size:13px}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:1200;background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;padding:calc(10px + var(--safe-t)) 14px 12px;box-shadow:0 2px 14px rgba(0,0,0,.15)}
+.hrow{display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}
+.brand .dot{width:34px;height:34px;border-radius:11px;background:var(--turq);display:grid;place-items:center;font-size:18px}
+.brand small{display:block;font-weight:500;font-size:11.5px;opacity:.75;margin-top:-2px}
+.lang-switch{margin-inline-start:auto;display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.14);font-weight:700;font-size:13px}
+.searchrow{display:flex;gap:8px;margin-top:12px}
+.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:#fff;border-radius:13px;padding:0 12px;color:var(--ink)}
+.search input{flex:1;border:0;outline:0;font:inherit;padding:11px 0;background:transparent;min-width:0;color:var(--ink)}
+.search .x{color:var(--muted);font-size:18px;padding:4px}
+.chip-btn{display:flex;align-items:center;gap:6px;padding:0 13px;border-radius:13px;background:rgba(255,255,255,.14);font-weight:600;font-size:13.5px;white-space:nowrap}
+.chip-btn.on{background:var(--turq);color:#fff}
+
+/* ---------- Tabs ---------- */
+.tabs{display:flex;gap:6px;padding:12px 12px 4px;overflow-x:auto;scrollbar-width:none;position:sticky;z-index:400;background:var(--bg)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 14px;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:700;font-size:14px;color:var(--muted);transition:.15s}
+.tab .cnt{font-size:11.5px;background:var(--bg);padding:1px 7px;border-radius:999px;color:var(--muted)}
+.tab.on{color:#fff;border-color:transparent;background:var(--tc)}
+.tab.on .cnt{background:rgba(255,255,255,.25);color:#fff}
+
+.toolbar{display:flex;align-items:center;gap:8px;padding:6px 14px 10px}
+.toolbar .info{font-size:13px;color:var(--muted)}
+.seg{margin-inline-start:auto;display:flex;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:3px}
+.seg button{padding:6px 11px;border-radius:9px;font-size:13px;font-weight:600;color:var(--muted);display:flex;gap:5px;align-items:center}
+.seg button.on{background:var(--deep);color:#fff}
+
+/* ---------- Layout ---------- */
+main{padding:0 0 calc(20px + var(--safe-b))}
+.wrap{display:flex;flex-direction:column;gap:14px;padding:0 14px}
+#mapBox{isolation:isolate;height:62vh;min-height:340px;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#cfe9f2;position:relative}
+#map{position:absolute;inset:0}
+.layout-split #mapBox{height:40vh;min-height:260px}
+.layout-list #mapBox{display:none}
+.layout-map #list{display:none}
+@media (min-width:900px){
+  .layout-split .wrap{flex-direction:row;align-items:flex-start}
+  .layout-split #mapBox{position:sticky;top:190px;flex:1.1;height:calc(100vh - 210px)}
+  .layout-split #list{flex:1;max-height:none}
+  .layout-split #list{grid-template-columns:1fr}
+}
+#list{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+
+/* ---------- Card ---------- */
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;border:2px solid transparent}
+.card.focus{border-color:var(--turq);box-shadow:0 0 0 4px rgba(25,179,177,.18),var(--shadow)}
+.cover{position:relative;height:150px;background:var(--cg);display:flex;align-items:flex-end;justify-content:flex-start;overflow:hidden}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover .emo{position:absolute;inset:0;display:grid;place-items:center;font-size:62px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.18))}
+.cover svg.wv{position:absolute;bottom:-1px;left:0;width:100%;height:46px;opacity:.35}
+.badges{position:absolute;top:10px;inset-inline-start:10px;display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink)}
+.badge.new{background:#ffcf3f;color:#4a3500}
+.badge.cat{color:#fff;background:var(--cc)}
+.date-flag{position:absolute;top:10px;inset-inline-end:10px;background:#fff;border-radius:12px;padding:5px 10px;text-align:center;line-height:1.05;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.date-flag b{display:block;font-size:20px;color:var(--deep)}
+.date-flag span{font-size:11px;font-weight:700;color:var(--coral);text-transform:uppercase}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ctitle{display:flex;align-items:flex-start;gap:8px}
+.ctitle h3{margin:0;font-size:17px;font-weight:800;line-height:1.25;flex:1}
+.rating{font-size:13px;font-weight:700;color:#b07800;white-space:nowrap}
+.desc{margin:0;color:#3a4e60;font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+.meta div{display:flex;gap:7px;align-items:flex-start}
+.meta i{font-style:normal;width:16px;flex:0 0 16px;text-align:center}
+.cfoot{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+.price{font-weight:800;font-size:13.5px;padding:5px 10px;border-radius:10px;background:var(--sand);color:#8a5a17}
+.price.free{background:var(--carmel-l);color:var(--carmel)}
+.dist{font-size:12.5px;color:var(--muted);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:11px;font-weight:700;font-size:13px;text-decoration:none}
+.btn.pri{background:var(--deep);color:#fff;margin-inline-start:auto}
+.btn.ghost{background:var(--turq-l);color:#0b6f6d}
+.btn.waze{background:#33ccff;color:#06324a}
+.btn.gm{background:#e9f0ff;color:#1a4fb5}
+
+.empty{grid-column:1/-1;text-align:center;padding:40px 10px;color:var(--muted)}
+.empty .e{font-size:42px}
+
+/* ---------- Map popup ---------- */
+.leaflet-popup-content-wrapper{border-radius:16px;padding:0;overflow:hidden}
+.leaflet-popup-content{margin:0;width:250px!important;font-family:inherit}
+.pop .cover{height:96px}
+.pop .cover .emo{font-size:40px}
+.pop .pb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px}
+.pop h4{margin:0;font-size:15px;font-weight:800;color:var(--ink)}
+.pop .row{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
+.pop .acts{display:flex;gap:6px;flex-wrap:wrap}
+.pop .acts .btn{padding:6px 9px;font-size:12px}
+.legend{position:absolute;z-index:450;bottom:10px;inset-inline-start:10px;background:rgba(255,255,255,.94);border-radius:12px;padding:7px 10px;font-size:12px;display:flex;flex-direction:column;gap:3px;box-shadow:var(--shadow)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend b{width:11px;height:11px;border-radius:50%;display:inline-block}
+.map-note{position:absolute;z-index:450;top:10px;left:50%;transform:translateX(-50%);background:rgba(11,58,91,.88);color:#fff;font-size:12px;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.me-dot{width:16px;height:16px;border-radius:50%;background:#2a7cff;border:3px solid #fff;box-shadow:0 0 0 6px rgba(42,124,255,.25)}
+
+.toast{position:fixed;bottom:calc(18px + var(--safe-b));left:50%;transform:translateX(-50%);background:var(--deep);color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:3000;box-shadow:var(--shadow);max-width:90vw;text-align:center}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px 14px 6px}
+
+/* Lang modal */
+#langModal{position:fixed;inset:0;z-index:2500;background:rgba(8,30,48,.5);display:flex;align-items:flex-end;justify-content:center}
+#langModal .sheet{background:#fff;width:100%;max-width:440px;border-radius:22px 22px 0 0;padding:18px 16px calc(18px + var(--safe-b))}
+#langModal h3{margin:4px 4px 14px;font-size:17px}
+#langModal .lang-btn{background:var(--bg);box-shadow:none;border:1.5px solid var(--line)}
+#langModal .lang-btn.on{border-color:var(--turq);background:var(--turq-l)}
+@media (min-width:600px){#langModal{align-items:center}#langModal .sheet{border-radius:22px}}
+</style>
+</head>
+<body>
+
+<!-- Language splash -->
+<div id="splash" class="hidden">
+  <svg class="waves" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#fff" d="M0,192L60,186.7C120,181,240,171,360,181.3C480,192,600,224,720,218.7C840,213,960,171,1080,160C1200,149,1320,171,1380,181.3L1440,192L1440,320L0,320Z"/></svg>
+  <div class="splash-box">
+    <div class="splash-logo">🌊</div>
+    <h1>חיפה · Haifa · Haïfa</h1>
+    <p>בחרו שפה · Choose a language · Choisissez une langue</p>
+    <div id="splashLangs"></div>
+  </div>
+</div>
+
+<div id="langModal" class="hidden"><div class="sheet"><h3 id="langModalTitle"></h3><div id="modalLangs"></div></div></div>
+
+<header>
+  <div class="hrow">
+    <div class="brand"><div class="dot">🌊</div><div><span data-t="appName"></span><small data-t="tagline"></small></div></div>
+    <button class="lang-switch" id="langSwitch">🌐 <span id="langCode">HE</span></button>
+  </div>
+  <div class="searchrow">
+    <label class="search">🔍<input id="q" type="search" autocomplete="off"><button class="x hidden" id="qx" aria-label="clear">✕</button></label>
+    <button class="chip-btn" id="nearBtn">📍 <span data-t="nearMe"></span></button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+<div class="toolbar">
+  <span class="info" id="info"></span>
+  <div class="seg" id="seg">
+    <button data-v="list">☰ <span data-t="vList"></span></button>
+    <button data-v="split">◫ <span data-t="vSplit"></span></button>
+    <button data-v="map">🗺 <span data-t="vMap"></span></button>
+  </div>
+</div>
+
+<main id="main" class="layout-split">
+  <div class="wrap">
+    <div id="mapBox"><div id="map"></div><div class="legend" id="legend"></div></div>
+    <section id="list"></section>
+  </div>
+  <footer><span data-t="footer"></span> · <span id="ver"></span></footer>
+</main>
+
+<script src="vendor/leaflet.js"></script>
+<script>
+/* =====================================================================
+   CONFIG — data source. The app reads content only from here, so
+   places/events can be added, edited or removed without touching code.
+   • Default: data.json beside this page.
+   • Supabase: fill url + anonKey; the table must expose the same fields
+     (see README.md for the SQL). If it fails, the app falls back to data.json.
+   ===================================================================== */
+const CONFIG = {
+  dataUrl: 'data.json',
+  supabase: { url: '', anonKey: '', table: 'places' },
+  newDays: 7,
+  center: [32.80, 34.99], zoom: 12
+};
+
+/* ---------------- i18n ---------------- */
+const LANGS = {
+  he:{label:'עברית',sub:'Hebrew',flag:'🇮🇱',dir:'rtl'},
+  en:{label:'English',sub:'אנגלית',flag:'🇬🇧',dir:'ltr'},
+  fr:{label:'Français',sub:'French',flag:'🇫🇷',dir:'ltr'}
+};
+const T = {
+  he:{appName:'מדריך חיפה',tagline:'חיפה, הכרמל, הקריות וחוף הכרמל',nearMe:'קרוב אליי',search:'חיפוש מקום, שכונה או אירוע…',
+    attractions:'אטרקציות',restaurants:'מסעדות',free:'בחינם',events:'אירועים',vList:'רשימה',vSplit:'מפוצל',vMap:'מפה',
+    showMap:'הצג על המפה',navigate:'ניווט',free_:'חינם',new_:'חדש',hours:'שעות',address:'כתובת',details:'פרטים',
+    results:n=>`${n} המלצות`,empty:'לא נמצאו תוצאות. נסו חיפוש אחר.',kmAway:d=>`${d} ק״מ ממך`,mAway:d=>`${d} מ׳ ממך`,
+    locating:'מאתר מיקום…',locFail:'לא הצלחנו לקבל מיקום. בדקו שהרשאת המיקום פעילה.',sortedNear:'ממוין לפי קרבה',
+    chooseLang:'בחירת שפה',footer:'המידע מתעדכן מקובץ הנתונים · כדאי לוודא שעות לפני הגעה',
+    offlineMap:'מפה בסיסית (אין גישה לשכבת המפה)',loadFail:'שגיאה בטעינת הנתונים',guideRating:'דירוג המדריך',
+    until:'עד',months:['ינו׳','פבר׳','מרץ','אפר׳','מאי','יוני','יולי','אוג׳','ספט׳','אוק׳','נוב׳','דצמ׳']},
+  en:{appName:'Haifa Guide',tagline:'Haifa, Carmel, Krayot & Carmel Coast',nearMe:'Near me',search:'Search a place, area or event…',
+    attractions:'Attractions',restaurants:'Restaurants',free:'Free',events:'Events',vList:'List',vSplit:'Split',vMap:'Map',
+    showMap:'Show on map',navigate:'Navigate',free_:'Free',new_:'New',hours:'Hours',address:'Address',details:'Details',
+    results:n=>`${n} recommendations`,empty:'No results found. Try another search.',kmAway:d=>`${d} km away`,mAway:d=>`${d} m away`,
+    locating:'Getting your location…',locFail:'Could not get your location. Check that location access is allowed.',sortedNear:'Sorted by distance',
+    chooseLang:'Choose language',footer:'Content loads from the data file · please check hours before visiting',
+    offlineMap:'Basic map (map tiles unavailable)',loadFail:'Error loading data',guideRating:'Guide rating',
+    until:'until',months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']},
+  fr:{appName:'Guide de Haïfa',tagline:'Haïfa, Carmel, Krayot et côte du Carmel',nearMe:'Près de moi',search:'Chercher un lieu, un quartier, un événement…',
+    attractions:'Attractions',restaurants:'Restaurants',free:'Gratuit',events:'Événements',vList:'Liste',vSplit:'Partagé',vMap:'Carte',
+    showMap:'Voir sur la carte',navigate:'Itinéraire',free_:'Gratuit',new_:'Nouveau',hours:'Horaires',address:'Adresse',details:'Détails',
+    results:n=>`${n} recommandations`,empty:'Aucun résultat. Essayez une autre recherche.',kmAway:d=>`à ${d} km`,mAway:d=>`à ${d} m`,
+    locating:'Localisation en cours…',locFail:'Impossible d\'obtenir votre position. Vérifiez l\'autorisation de localisation.',sortedNear:'Trié par distance',
+    chooseLang:'Choisir la langue',footer:'Contenu chargé depuis le fichier de données · vérifiez les horaires avant de venir',
+    offlineMap:'Carte simplifiée (fond de carte indisponible)',loadFail:'Erreur de chargement des données',guideRating:'Note du guide',
+    until:'jusqu\'au',months:['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.']}
+};
+const CATS = {
+  attractions:{icon:'🏛️',color:'var(--c-attractions)',hex:'#0f6fae',grad:'linear-gradient(135deg,#0b3a5b,#1a86c4)'},
+  restaurants:{icon:'🍽️',color:'var(--c-restaurants)',hex:'#e2774a',grad:'linear-gradient(135deg,#c2512a,#f2a65a)'},
+  free:{icon:'🌿',color:'var(--c-free)',hex:'#4f8a3b',grad:'linear-gradient(135deg,#2f6b2a,#7fb85a)'},
+  events:{icon:'🎭',color:'var(--c-events)',hex:'#13a3a0',grad:'linear-gradient(135deg,#0e6f8f,#19c2b8)'}
+};
+const EMO = {a1:'🌸',a2:'🔬',a3:'🚡',a4:'🏯',a5:'⚓',a6:'🎨',r1:'🧆',r2:'🫖',r3:'🍷',r4:'🍺',r5:'☕',f1:'🌅',f2:'🗿',f3:'🏺',f4:'🕯️',f5:'🏖️',f6:'🚲',e1:'🎄',e2:'✨',e3:'🎻',e4:'🎼',e5:'🎶'};
+
+/* ---------------- state ---------------- */
+const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const S = {lang: store.get('hg_lang'), tab: store.get('hg_tab')||'attractions', view: store.get('hg_view')||(innerWidth>=900?'split':'list'),
+  q:'', items:[], me:null, near:false, focus:null, version:''};
+const $ = s=>document.querySelector(s);
+const L_ = window.L;
+const t = k=>T[S.lang][k];
+const tr = o=>o ? (o[S.lang] ?? o.he ?? o.en ?? '') : '';
+const esc = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------------- data loading ---------------- */
+async function loadData(){
+  const sb = CONFIG.supabase;
+  if (sb.url && sb.anonKey){
+    try{
+      const r = await fetch(`${sb.url}/rest/v1/${sb.table}?select=*&active=eq.true`,{headers:{apikey:sb.anonKey,Authorization:`Bearer ${sb.anonKey}`}});
+      if(!r.ok) throw new Error(r.status);
+      return {version:'live', items: await r.json()};
+    }catch(e){ console.warn('Supabase failed, using data.json',e) }
+  }
+  const r = await fetch(CONFIG.dataUrl+'?v='+Date.now(),{cache:'no-store'});
+  if(!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+/* ---------------- helpers ---------------- */
+const now = ()=>new Date();
+function isNew(it){ if(!it.added) return false; const d=(now()-new Date(it.added))/864e5; return d>=0 && d<=CONFIG.newDays; }
+function isPast(it){ if(it.category!=='events') return false; const end=new Date(it.end||it.start); return end < now(); }
+function inTab(it,tab){ return tab==='free' ? (it.category==='free' || it.price==='free') : it.category===tab; }
+function distKm(it){ if(!S.me) return null; const R=6371,toR=x=>x*Math.PI/180;
+  const dLa=toR(it.lat-S.me[0]),dLo=toR(it.lng-S.me[1]);
+  const a=Math.sin(dLa/2)**2+Math.cos(toR(S.me[0]))*Math.cos(toR(it.lat))*Math.sin(dLo/2)**2; return 2*R*Math.asin(Math.sqrt(a)); }
+function distTxt(it){ const d=distKm(it); if(d==null) return ''; return d<1? t('mAway')(Math.round(d*1000/10)*10) : t('kmAway')(d<10?d.toFixed(1):Math.round(d)); }
+function navLinks(it){ return {waze:`https://waze.com/ul?ll=${it.lat},${it.lng}&navigate=yes`, gm:`https://www.google.com/maps/dir/?api=1&destination=${it.lat},${it.lng}`}; }
+function visible(tab=S.tab){
+  const q=S.q.trim().toLowerCase();
+  let arr=S.items.filter(it=>!isPast(it) && inTab(it,tab));
+  if(q) arr=arr.filter(it=>['he','en','fr'].some(l=>[it.name,it.desc,it.address].some(o=>(o?.[l]||'').toLowerCase().includes(q))));
+  if(S.near && S.me) arr.sort((a,b)=>distKm(a)-distKm(b));
+  else if(tab==='events') arr.sort((a,b)=>new Date(a.start)-new Date(b.start));
+  else arr.sort((a,b)=>(isNew(b)-isNew(a))||(b.rating||0)-(a.rating||0));
+  return arr;
+}
+function coverHTML(it,small){
+  const c=CATS[it.category]||CATS.attractions;
+  const img = it.image ? `<img src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+  let date='';
+  if(it.category==='events' && it.start){ const d=new Date(it.start); date=`<div class="date-flag"><b>${d.getDate()}</b><span>${t('months')[d.getMonth()]}</span></div>`; }
+  const badges = small?'':`<div class="badges"><span class="badge cat" style="--cc:${c.color}">${c.icon} ${t(it.category)}</span>${isNew(it)?`<span class="badge new">★ ${t('new_')}</span>`:''}</div>`;
+  return `<div class="cover" style="--cg:${c.grad}"><div class="emo">${EMO[it.id]||c.icon}</div>${img}
+   <svg class="wv" viewBox="0 0 1440 120" preserveAspectRatio="none"><path fill="#fff" d="M0,64L80,58.7C160,53,320,43,480,53.3C640,64,800,96,960,96C1120,96,1280,64,1360,48L1440,32L1440,120L0,120Z"/></svg>
+   ${badges}${small?'':date}</div>`;
+}
+function priceHTML(it){ return it.price==='free' ? `<span class="price free">${t('free_')}</span>` : `<span class="price">${esc(it.price||'')}</span>`; }
+
+/* ---------------- render ---------------- */
+function applyLang(){
+  const meta=LANGS[S.lang]; document.documentElement.lang=S.lang; document.documentElement.dir=meta.dir;
+  document.title = `${T[S.lang].appName} · Haifa`;
+  document.querySelectorAll('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));
+  $('#q').placeholder=t('search'); if($('#mapNote')) $('#mapNote').textContent=t('offlineMap'); $('#langCode').textContent=S.lang.toUpperCase();
+  $('#legend').innerHTML=Object.entries(CATS).map(([k,c])=>`<span><b style="background:${c.hex}"></b>${t(k)}</span>`).join('');
+  renderTabs(); render();
+}
+function renderTabs(){
+  $('#tabs').innerHTML=Object.keys(CATS).map(k=>`<button class="tab ${S.tab===k?'on':''}" style="--tc:${CATS[k].color}" data-k="${k}">${CATS[k].icon} ${t(k)} <span class="cnt">${visible(k).length}</span></button>`).join('');
+}
+function cardHTML(it){
+  const d=distTxt(it);
+  return `<article class="card ${S.focus===it.id?'focus':''}" id="c-${it.id}">
+    ${coverHTML(it)}
+    <div class="cbody">
+      <div class="ctitle"><h3>${esc(tr(it.name))}</h3>${it.rating?`<span class="rating" title="${t('guideRating')}">★ ${Number(it.rating).toFixed(1)}</span>`:''}</div>
+      <p class="desc">${esc(tr(it.desc))}</p>
+      <div class="meta">
+        <div><i>🕒</i><span>${esc(tr(it.hours))}</span></div>
+        <div><i>📍</i><span>${esc(tr(it.address))}</span></div>
+      </div>
+      <div class="cfoot">${priceHTML(it)}${d?`<span class="dist">· ${d}</span>`:''}
+        ${it.link?`<a class="btn ghost" href="${esc(it.link)}" target="_blank" rel="noopener">${t('details')} ↗</a>`:''}
+        <button class="btn pri" data-show="${it.id}">🗺 ${t('showMap')}</button>
+      </div>
+    </div></article>`;
+}
+function render(){
+  const arr=visible();
+  $('#info').textContent = t('results')(arr.length) + (S.near&&S.me?` · ${t('sortedNear')}`:'');
+  $('#list').innerHTML = arr.length ? arr.map(cardHTML).join('') : `<div class="empty"><div class="e">🔎</div>${t('empty')}</div>`;
+  $('#main').className='layout-'+S.view;
+  document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.view));
+  $('#nearBtn').classList.toggle('on',S.near);
+  renderTabs(); renderMarkers(arr);
+  if(map) setTimeout(()=>{ map.invalidateSize(); if(!S.focus) fitAll(arr); },80);
+}
+
+/* ---------------- map ---------------- */
+let map, layer, meMarker, markers={};
+function initMap(){
+  map=L_.map('map',{zoomControl:true,attributionControl:true}).setView(CONFIG.center,CONFIG.zoom);
+  let loaded=0, errs=0;
+  const tiles=L_.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  tiles.on('tileload',()=>loaded++); tiles.on('tileerror',()=>{errs++; if(errs>3&&!loaded) fallbackMap();});
+  setTimeout(()=>{ if(!loaded) fallbackMap(); },4500);
+  map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  layer=L_.layerGroup().addTo(map);
+}
+let fbDone=false;
+function fallbackMap(){ /* simple vector coastline when tile servers are unreachable */
+  if(fbDone) return; fbDone=true;
+  const coast=[[32.66,34.930],[32.70,34.938],[32.72,34.946],[32.75,34.953],[32.78,34.958],[32.80,34.957],[32.815,34.954],[32.826,34.951],[32.833,34.960],[32.833,34.975],[32.826,34.986],[32.822,34.996],[32.818,35.010],[32.813,35.028],[32.815,35.043],[32.825,35.058],[32.840,35.068],[32.860,35.073],[32.880,35.076],[32.905,35.074],[32.93,35.066]];
+  L_.rectangle([[32.6,34.8],[33.0,35.3]],{stroke:false,fillColor:'#e7efe0',fillOpacity:1,interactive:false}).addTo(map).bringToBack();
+  L_.polygon([...coast,[32.93,34.8],[32.66,34.8]],{stroke:true,color:'#9cc9dc',weight:2,fillColor:'#bfe3f0',fillOpacity:1,interactive:false}).addTo(map);
+  L_.polygon([[32.83,34.99],[32.80,34.98],[32.76,34.99],[32.72,34.98],[32.70,35.00],[32.73,35.04],[32.77,35.05],[32.80,35.03],[32.82,35.01]],{stroke:false,fillColor:'#c9dcb8',fillOpacity:.9,interactive:false}).addTo(map);
+  const lbl=(p,txt)=>L_.marker(p,{interactive:false,icon:L_.divIcon({className:'',html:`<div style="font:700 12px Heebo,sans-serif;color:#3d5a6c;white-space:nowrap;transform:translate(-50%,-50%)">${txt}</div>`})}).addTo(map);
+  lbl([32.805,35.005],'Haifa · חיפה'); lbl([32.86,35.09],'Krayot · הקריות'); lbl([32.75,35.02],'Carmel · הכרמל'); lbl([32.69,34.965],'Atlit · עתלית'); lbl([32.84,34.92],'🌊');
+  const n=document.createElement('div'); n.className='map-note'; n.id='mapNote'; n.textContent=t('offlineMap'); $('#mapBox').appendChild(n);
+}
+function pinIcon(it){
+  const c=CATS[it.category]; const sel=S.focus===it.id;
+  return L_.divIcon({className:'',iconSize:[34,42],iconAnchor:[17,40],popupAnchor:[0,-36],
+    html:`<svg width="34" height="42" viewBox="0 0 34 42" style="filter:drop-shadow(0 3px 4px rgba(0,0,0,.3))"><path d="M17 41C17 41 32 26 32 16A15 15 0 0 0 2 16C2 26 17 41 17 41Z" fill="${c.hex}" stroke="#fff" stroke-width="${sel?3.5:2}"/><text x="17" y="21" text-anchor="middle" font-size="14">${EMO[it.id]||c.icon}</text></svg>`});
+}
+function popupHTML(it){
+  const n=navLinks(it), d=distTxt(it);
+  return `<div class="pop">${coverHTML(it,true)}<div class="pb"><h4>${esc(tr(it.name))}</h4>
+   <div class="row">${it.rating?`<span class="rating">★ ${Number(it.rating).toFixed(1)}</span>`:''}${priceHTML(it)}${d?`<span>${d}</span>`:''}</div>
+   <div class="acts"><a class="btn waze" href="${n.waze}" target="_blank" rel="noopener">Waze</a><a class="btn gm" href="${n.gm}" target="_blank" rel="noopener">Google Maps</a>
+   <button class="btn ghost" data-card="${it.id}">☰ ${t('details')}</button></div></div></div>`;
+}
+function renderMarkers(arr){
+  if(!map) return; layer.clearLayers(); markers={};
+  arr.forEach(it=>{ const m=L_.marker([it.lat,it.lng],{icon:pinIcon(it)}).bindPopup(popupHTML(it),{maxWidth:260,minWidth:250});
+    m.on('click',()=>{S.focus=it.id; highlightCard();}); m.addTo(layer); markers[it.id]=m; });
+}
+function fitAll(arr){
+  if(!arr.length || S.view==='list') return;
+  const b=L_.latLngBounds(arr.map(i=>[i.lat,i.lng])); if(S.me&&S.near) b.extend(S.me);
+  map.fitBounds(b.pad(.15),{maxZoom:15});
+}
+function highlightCard(){ document.querySelectorAll('.card.focus').forEach(c=>c.classList.remove('focus')); const c=$('#c-'+S.focus); if(c) c.classList.add('focus'); }
+function showOnMap(id){
+  const it=S.items.find(i=>i.id===id); if(!it) return; S.focus=id;
+  if(S.view==='list'){ S.view='split'; store.set('hg_view',S.view); render(); }
+  highlightCard();
+  setTimeout(()=>{ map.invalidateSize(); map.setView([it.lat,it.lng],16,{animate:true}); markers[id]?.openPopup();
+    $('#mapBox').scrollIntoView({behavior:'smooth',block:'start'}); },120);
+}
+
+/* ---------------- location ---------------- */
+function toast(msg,ms=2600){ const d=document.createElement('div'); d.className='toast'; d.textContent=msg; document.body.appendChild(d); setTimeout(()=>d.remove(),ms); }
+function nearMe(){
+  if(S.near){ S.near=false; render(); return; }
+  if(!navigator.geolocation){ toast(t('locFail')); return; }
+  toast(t('locating'),1500);
+  navigator.geolocation.getCurrentPosition(p=>{
+    S.me=[p.coords.latitude,p.coords.longitude]; S.near=true;
+    if(meMarker) meMarker.remove();
+    meMarker=L_.marker(S.me,{icon:L_.divIcon({className:'',html:'<div class="me-dot"></div>',iconSize:[16,16],iconAnchor:[8,8]}),zIndexOffset:1000}).addTo(map);
+    S.focus=null; render();
+  },()=>toast(t('locFail'),3500),{enableHighAccuracy:true,timeout:9000,maximumAge:60000});
+}
+
+/* ---------------- language UI ---------------- */
+function langButtons(cur){ return Object.entries(LANGS).map(([k,m])=>`<button class="lang-btn ${cur===k?'on':''}" data-lang="${k}" dir="${m.dir}"><span class="flag">${m.flag}</span>${m.label}<small>${m.sub}</small></button>`).join(''); }
+function setLang(l){ S.lang=l; store.set('hg_lang',l); $('#splash').classList.add('hidden'); $('#langModal').classList.add('hidden'); applyLang(); if(map) map.invalidateSize(); }
+
+/* ---------------- events ---------------- */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-lang]'); if(b){ setLang(b.dataset.lang); return; }
+  const tab=e.target.closest('.tab'); if(tab){ S.tab=tab.dataset.k; S.focus=null; store.set('hg_tab',S.tab); render(); return; }
+  const v=e.target.closest('#seg button'); if(v){ S.view=v.dataset.v; store.set('hg_view',S.view); render(); return; }
+  const s=e.target.closest('[data-show]'); if(s){ showOnMap(s.dataset.show); return; }
+  const c=e.target.closest('[data-card]'); if(c){ const id=c.dataset.card; if(S.view==='map'){S.view='split';render();} S.focus=id; highlightCard(); $('#c-'+id)?.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+});
+$('#langSwitch').onclick=()=>{ $('#langModalTitle').textContent=t('chooseLang'); $('#modalLangs').innerHTML=langButtons(S.lang); $('#langModal').classList.remove('hidden'); };
+$('#langModal').onclick=e=>{ if(e.target.id==='langModal') e.currentTarget.classList.add('hidden'); };
+let qt; $('#q').oninput=e=>{ S.q=e.target.value; $('#qx').classList.toggle('hidden',!S.q); clearTimeout(qt); qt=setTimeout(()=>{S.focus=null;render()},150); };
+$('#qx').onclick=e=>{ e.preventDefault(); $('#q').value=''; S.q=''; $('#qx').classList.add('hidden'); render(); };
+$('#nearBtn').onclick=nearMe;
+
+/* ---------------- boot ---------------- */
+(async function boot(){
+  if(!LANGS[S.lang]){ S.lang=null; }
+  $('#splashLangs').innerHTML=langButtons();
+  initMap();
+  try{ const d=await loadData(); S.items=d.items||[]; S.version=d.version||''; $('#ver').textContent='v'+S.version; }
+  catch(e){ console.error(e); S.items=[]; }
+  if(!S.lang){ S.lang='he'; applyLang(); $('#splash').classList.remove('hidden'); }
+  else applyLang();
+  if(!S.items.length) toast(T[S.lang].loadFail,4000);
+})();
+</script>
+</body>
+</html>

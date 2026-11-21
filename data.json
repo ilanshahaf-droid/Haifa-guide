@@ -1,0 +1,194 @@
+{
+  "version": "2026-11-21",
+  "items": [
+    {
+      "id": "a1", "category": "attractions", "price": "free", "rating": 5.0,
+      "lat": 32.8143, "lng": 34.9867, "added": "2026-11-01", "image": "", "link": "https://www.ganbahai.org.il",
+      "name": {"he": "הגנים הבהאיים", "en": "Bahá'í Gardens", "fr": "Jardins bahá'ís"},
+      "desc": {"he": "19 טרסות מטופחות היורדות במורד הכרמל אל מקדש הבאב עם כיפת הזהב. אתר מורשת עולמית של אונסק\"ו ותצפית מרהיבה על המפרץ.", "en": "Nineteen manicured terraces cascading down Mount Carmel to the golden-domed Shrine of the Báb. A UNESCO World Heritage Site with a breathtaking bay view.", "fr": "Dix-neuf terrasses soignées descendant le mont Carmel jusqu'au mausolée du Báb et son dôme doré. Site classé à l'UNESCO, avec une vue imprenable sur la baie."},
+      "address": {"he": "שד' הציונות 80 / תצפית עליונה: יפה נוף 61", "en": "80 HaTsiyonut Ave / upper viewpoint: 61 Yefe Nof St", "fr": "80 av. HaTsiyonut / belvédère : 61 rue Yefe Nof"},
+      "hours": {"he": "גנים חיצוניים 9:00–17:00 · סיורים מודרכים חינם (לבדוק באתר)", "en": "Outer gardens 9:00–17:00 · free guided tours (check website)", "fr": "Jardins extérieurs 9h–17h · visites guidées gratuites (voir le site)"}
+    },
+    {
+      "id": "a2", "category": "attractions", "price": "₪₪", "rating": 4.5,
+      "lat": 32.8125, "lng": 34.9963, "added": "2026-11-01", "image": "", "link": "https://www.madatech.org.il",
+      "name": {"he": "מדעטק – המוזיאון הלאומי למדע", "en": "Madatech – National Science Museum", "fr": "Madatech – Musée national des sciences"},
+      "desc": {"he": "מוזיאון מדע אינטראקטיבי בבניין הטכניון ההיסטורי בהדר. מוצגים להפעלה, מופעי מדע ותערוכות מתחלפות – חוויה מעולה למשפחות.", "en": "Hands-on science museum in the historic Technion building in Hadar. Interactive exhibits, science shows and rotating exhibitions — great for families.", "fr": "Musée des sciences interactif dans le bâtiment historique du Technion, à Hadar. Expositions à manipuler et spectacles scientifiques — idéal en famille."},
+      "address": {"he": "רח' בלפור 25, הדר הכרמל", "en": "25 Balfour St, Hadar HaCarmel", "fr": "25 rue Balfour, Hadar HaCarmel"},
+      "hours": {"he": "א'–ה' 10:00–17:00 · ו' 10:00–14:00 (משתנה בחגים)", "en": "Sun–Thu 10:00–17:00 · Fri 10:00–14:00 (varies on holidays)", "fr": "dim–jeu 10h–17h · ven 10h–14h (variable les jours fériés)"}
+    },
+    {
+      "id": "a3", "category": "attractions", "price": "₪", "rating": 4.3,
+      "lat": 32.8305, "lng": 34.9705, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "הרכבל – בת גלים לסטלה מאריס", "en": "Cable Car – Bat Galim to Stella Maris", "fr": "Téléphérique – Bat Galim à Stella Maris"},
+      "desc": {"he": "קרונות הבועה המפורסמים עולים מטיילת בת גלים אל מנזר סטלה מאריס. נסיעה קצרה עם נוף פנורמי לים ולנמל.", "en": "The iconic bubble cars climb from the Bat Galim promenade to the Stella Maris monastery — a short ride with panoramic sea and port views.", "fr": "Les célèbres cabines « bulles » montent de la promenade de Bat Galim au monastère Stella Maris — court trajet avec vue panoramique sur la mer."},
+      "address": {"he": "תחנה תחתונה: טיילת בת גלים", "en": "Lower station: Bat Galim promenade", "fr": "Station basse : promenade de Bat Galim"},
+      "hours": {"he": "בדרך כלל 10:00–18:00 (תלוי מזג אוויר)", "en": "Usually 10:00–18:00 (weather permitting)", "fr": "En général 10h–18h (selon la météo)"}
+    },
+    {
+      "id": "a4", "category": "attractions", "price": "₪₪", "rating": 4.4,
+      "lat": 32.8086, "lng": 34.9887, "added": "2026-11-01", "image": "", "link": "https://www.hms.org.il",
+      "name": {"he": "מוזיאון טיקוטין לאמנות יפנית", "en": "Tikotin Museum of Japanese Art", "fr": "Musée Tikotin d'art japonais"},
+      "desc": {"he": "המוזיאון היחיד במזרח התיכון המוקדש לאמנות יפנית – הדפסים, קרמיקה ותערוכות מתחלפות, צמוד לטיילת לואי.", "en": "The only museum in the Middle East devoted to Japanese art — woodblock prints, ceramics and rotating shows, right by the Louis Promenade.", "fr": "Le seul musée du Moyen-Orient consacré à l'art japonais — estampes, céramiques et expositions temporaires, près de la promenade Louis."},
+      "address": {"he": "שד' הנשיא 89, מרכז הכרמל", "en": "89 HaNassi Blvd, Central Carmel", "fr": "89 bd HaNassi, Carmel central"},
+      "hours": {"he": "א'–ה' 10:00–16:00 · ו' 10:00–13:00 · ש' 10:00–15:00", "en": "Sun–Thu 10:00–16:00 · Fri 10:00–13:00 · Sat 10:00–15:00", "fr": "dim–jeu 10h–16h · ven 10h–13h · sam 10h–15h"}
+    },
+    {
+      "id": "a5", "category": "attractions", "price": "₪", "rating": 4.6,
+      "lat": 32.7000, "lng": 34.9440, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "מחנה המעפילים עתלית", "en": "Atlit Detainee Camp", "fr": "Camp de détention d'Atlit"},
+      "desc": {"he": "אתר מורשת לאומי המספר את סיפור ההעפלה – צריפים משוחזרים, ספינת מעפילים וסיורים מודרכים מרגשים.", "en": "National heritage site telling the story of clandestine immigration — restored barracks, an immigrant ship and moving guided tours.", "fr": "Site du patrimoine national racontant l'immigration clandestine — baraquements restaurés, navire d'immigrants et visites guidées émouvantes."},
+      "address": {"he": "עתלית, ליד כביש 2", "en": "Atlit, off Highway 2", "fr": "Atlit, près de la route 2"},
+      "hours": {"he": "א'–ה' 9:00–17:00 · ו' 9:00–13:00 (מומלץ להזמין מראש)", "en": "Sun–Thu 9:00–17:00 · Fri 9:00–13:00 (booking advised)", "fr": "dim–jeu 9h–17h · ven 9h–13h (réservation conseillée)"}
+    },
+    {
+      "id": "a6", "category": "attractions", "price": "free", "rating": 4.5,
+      "lat": 32.6997, "lng": 34.9810, "added": "2026-11-17", "image": "", "link": "",
+      "name": {"he": "כפר האמנים עין הוד", "en": "Ein Hod Artists' Village", "fr": "Village d'artistes d'Ein Hod"},
+      "desc": {"he": "כפר אמנים ציורי במורדות הכרמל עם גלריות, סדנאות ובתי קפה בסמטאות אבן. הכניסה לכפר חופשית.", "en": "A picturesque artists' village on the Carmel slopes with galleries, workshops and cafés along stone alleys. Free to wander.", "fr": "Village d'artistes pittoresque sur les pentes du Carmel : galeries, ateliers et cafés dans des ruelles de pierre. Accès libre."},
+      "address": {"he": "עין הוד, חוף הכרמל", "en": "Ein Hod, Carmel Coast", "fr": "Ein Hod, côte du Carmel"},
+      "hours": {"he": "גלריות בעיקר 10:00–17:00, בסופי שבוע עמוס יותר", "en": "Galleries mostly 10:00–17:00, busiest on weekends", "fr": "Galeries surtout 10h–17h, plus animé le week-end"}
+    },
+
+    {
+      "id": "r1", "category": "restaurants", "price": "₪", "rating": 4.7,
+      "lat": 32.8152, "lng": 34.9935, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "פלאפל הזקנים", "en": "Falafel HaZkenim", "fr": "Falafel HaZkenim"},
+      "desc": {"he": "מוסד חיפאי בלב ואדי ניסנאס – פלאפל טרי ופריך בפיתה עם טחינה וסלטים. התורים זזים מהר.", "en": "A Haifa institution in the heart of Wadi Nisnas — fresh, crispy falafel in pita with tahini and salads. The line moves fast.", "fr": "Une institution de Haïfa au cœur de Wadi Nisnas — falafels frais et croustillants en pita, tahini et salades. La file avance vite."},
+      "address": {"he": "רח' הוואדי 18, ואדי ניסנאס", "en": "18 HaWadi St, Wadi Nisnas", "fr": "18 rue HaWadi, Wadi Nisnas"},
+      "hours": {"he": "א'–ש' 8:00–20:00 בערך", "en": "Daily approx. 8:00–20:00", "fr": "Tous les jours env. 8h–20h"}
+    },
+    {
+      "id": "r2", "category": "restaurants", "price": "₪₪", "rating": 4.4,
+      "lat": 32.8190, "lng": 34.9900, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "פתוש", "en": "Fattoush", "fr": "Fattoush"},
+      "desc": {"he": "בית קפה-מסעדה ערבי באווירה בוהמית במושבה הגרמנית – חצר קסומה, מנות ים-תיכוניות ונרגילה.", "en": "Bohemian Arab café-restaurant in the German Colony — a magical courtyard, Mediterranean dishes and hookah.", "fr": "Café-restaurant arabe bohème dans la Colonie allemande — cour enchanteresse, cuisine méditerranéenne et narguilé."},
+      "address": {"he": "שד' בן גוריון 38, המושבה הגרמנית", "en": "38 Ben Gurion Blvd, German Colony", "fr": "38 bd Ben Gourion, Colonie allemande"},
+      "hours": {"he": "כל יום מהבוקר עד מאוחר בלילה", "en": "Daily, morning until late", "fr": "Tous les jours, du matin à tard le soir"}
+    },
+    {
+      "id": "r3", "category": "restaurants", "price": "₪₪", "rating": 4.3,
+      "lat": 32.8187, "lng": 34.9895, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "דוזאן", "en": "Douzan", "fr": "Douzan"},
+      "desc": {"he": "מסעדה-בית קפה עם עיצוב וינטג' ומטבח ערבי-צרפתי. מקום נהדר לערב רגוע בשדרה המוארת.", "en": "Vintage-styled café-restaurant with Arab-French cuisine. A lovely spot for a relaxed evening on the lit-up boulevard.", "fr": "Café-restaurant au décor vintage, cuisine franco-arabe. Parfait pour une soirée tranquille sur le boulevard illuminé."},
+      "address": {"he": "שד' בן גוריון 35, המושבה הגרמנית", "en": "35 Ben Gurion Blvd, German Colony", "fr": "35 bd Ben Gourion, Colonie allemande"},
+      "hours": {"he": "כל יום מהצהריים עד חצות בערך", "en": "Daily, noon to around midnight", "fr": "Tous les jours, de midi à minuit environ"}
+    },
+    {
+      "id": "r4", "category": "restaurants", "price": "₪₪", "rating": 4.5,
+      "lat": 32.8180, "lng": 35.0005, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "מעיין הבירה", "en": "Ma'ayan HaBira", "fr": "Ma'ayan HaBira"},
+      "desc": {"he": "בר-מסעדה ותיק בעיר התחתית עם אוכל מזרח-אירופאי ביתי, נקניקים מעושנים ובירה מהחבית.", "en": "Veteran downtown bar-restaurant serving homestyle Eastern European food, smoked sausages and draught beer.", "fr": "Bar-restaurant historique de la ville basse : cuisine d'Europe de l'Est maison, charcuterie fumée et bière pression."},
+      "address": {"he": "רח' נתנזון 4, העיר התחתית", "en": "4 Natanzon St, Downtown", "fr": "4 rue Natanzon, ville basse"},
+      "hours": {"he": "א'–ו' מהצהריים, בערבים לפי היום", "en": "Sun–Fri from noon; evenings vary", "fr": "dim–ven dès midi ; soirées variables"}
+    },
+    {
+      "id": "r5", "category": "restaurants", "price": "₪", "rating": 4.4,
+      "lat": 32.8097, "lng": 34.9975, "added": "2026-11-18", "image": "", "link": "",
+      "name": {"he": "קפה מסדה", "en": "Café Masada", "fr": "Café Masada"},
+      "desc": {"he": "בית הקפה השכונתי האהוב של רחוב מסדה בהדר – ארוחות בוקר, עוגות ואווירה סטודנטיאלית-אמנותית.", "en": "The beloved neighborhood café of Masada Street in Hadar — breakfasts, cakes and an artsy student vibe.", "fr": "Le café de quartier chéri de la rue Masada à Hadar — petits-déjeuners, gâteaux et ambiance étudiante et artistique."},
+      "address": {"he": "רח' מסדה, הדר הכרמל", "en": "Masada St, Hadar HaCarmel", "fr": "Rue Masada, Hadar HaCarmel"},
+      "hours": {"he": "א'–ו' מהבוקר, ש' משתנה", "en": "Sun–Fri from morning; Sat varies", "fr": "dim–ven dès le matin ; sam variable"}
+    },
+
+    {
+      "id": "f1", "category": "free", "price": "free", "rating": 4.8,
+      "lat": 32.8091, "lng": 34.9883, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "טיילת לואי", "en": "Louis Promenade", "fr": "Promenade Louis"},
+      "desc": {"he": "הטיילת המפורסמת בראש הכרמל עם תצפית פנורמית על המפרץ, הנמל והגליל. יפה במיוחד בשקיעה ובלילה.", "en": "The famous clifftop promenade atop Mount Carmel with panoramic views of the bay, port and Galilee. Stunning at sunset and at night.", "fr": "La célèbre promenade au sommet du Carmel, vue panoramique sur la baie, le port et la Galilée. Magique au coucher du soleil."},
+      "address": {"he": "רח' יפה נוף, מרכז הכרמל", "en": "Yefe Nof St, Central Carmel", "fr": "Rue Yefe Nof, Carmel central"},
+      "hours": {"he": "פתוח תמיד", "en": "Always open", "fr": "Toujours ouvert"}
+    },
+    {
+      "id": "f2", "category": "free", "price": "free", "rating": 4.4,
+      "lat": 32.8160, "lng": 34.9940, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "מוזיאון ללא קירות – ואדי ניסנאס", "en": "Museum Without Walls – Wadi Nisnas", "fr": "Musée sans murs – Wadi Nisnas"},
+      "desc": {"he": "פסלים ומיצבים פזורים בסמטאות השכונה הערבית ההיסטורית, לצד השוק הצבעוני. סיור עצמאי מקסים.", "en": "Sculptures and installations scattered through the alleys of the historic Arab neighborhood, next to the colorful market. A charming self-guided walk.", "fr": "Sculptures et installations dans les ruelles du quartier arabe historique, près du marché coloré. Une balade libre charmante."},
+      "address": {"he": "ואדי ניסנאס, ליד רח' הוואדי", "en": "Wadi Nisnas, near HaWadi St", "fr": "Wadi Nisnas, près de la rue HaWadi"},
+      "hours": {"he": "פתוח תמיד · השוק פעיל בבקרים", "en": "Always open · market busiest in the mornings", "fr": "Toujours ouvert · marché animé le matin"}
+    },
+    {
+      "id": "f3", "category": "free", "price": "free", "rating": 4.6,
+      "lat": 32.7615, "lng": 35.0195, "added": "2026-11-01", "image": "", "link": "https://mushecht.haifa.ac.il",
+      "name": {"he": "מוזיאון הכט", "en": "Hecht Museum", "fr": "Musée Hecht"},
+      "desc": {"he": "מוזיאון ארכיאולוגיה ואמנות באוניברסיטת חיפה, כולל ספינת מעגן מיכאל העתיקה וציורים אימפרסיוניסטים. הכניסה חינם.", "en": "Archaeology and art museum at the University of Haifa, featuring the ancient Ma'agan Michael ship and Impressionist paintings. Free entry.", "fr": "Musée d'archéologie et d'art à l'Université de Haïfa : l'épave antique de Ma'agan Michael et des toiles impressionnistes. Entrée libre."},
+      "address": {"he": "אוניברסיטת חיפה, שד' אבא חושי 199", "en": "University of Haifa, 199 Abba Hushi Blvd", "fr": "Université de Haïfa, 199 bd Abba Hushi"},
+      "hours": {"he": "א'–ה' 10:00–16:00 · ו' 10:00–13:00 · ש' 10:00–14:00", "en": "Sun–Thu 10:00–16:00 · Fri 10:00–13:00 · Sat 10:00–14:00", "fr": "dim–jeu 10h–16h · ven 10h–13h · sam 10h–14h"}
+    },
+    {
+      "id": "f4", "category": "free", "price": "free", "rating": 4.2,
+      "lat": 32.8255, "lng": 34.9600, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "מערת אליהו הנביא", "en": "Elijah's Cave", "fr": "Grotte d'Élie"},
+      "desc": {"he": "מערה מקודשת ליהודים, נוצרים ומוסלמים למרגלות הכרמל, מתחת למנזר סטלה מאריס. לבוש צנוע.", "en": "A cave sacred to Jews, Christians and Muslims at the foot of the Carmel, below Stella Maris. Modest dress required.", "fr": "Grotte sacrée pour juifs, chrétiens et musulmans, au pied du Carmel sous Stella Maris. Tenue modeste exigée."},
+      "address": {"he": "דרך אלנבי, מתחת לסטלה מאריס", "en": "Allenby Rd, below Stella Maris", "fr": "Route Allenby, sous Stella Maris"},
+      "hours": {"he": "א'–ה' 8:00–17:00 · ו' 8:00–13:00 (משתנה)", "en": "Sun–Thu 8:00–17:00 · Fri 8:00–13:00 (varies)", "fr": "dim–jeu 8h–17h · ven 8h–13h (variable)"}
+    },
+    {
+      "id": "f5", "category": "free", "price": "free", "rating": 4.5,
+      "lat": 32.7950, "lng": 34.9575, "added": "2026-11-01", "image": "", "link": "",
+      "name": {"he": "חוף דדו וטיילת דדו–זמיר", "en": "Dado Beach & Promenade", "fr": "Plage et promenade de Dado"},
+      "desc": {"he": "החוף הפופולרי של חיפה עם טיילת ארוכה, מדשאות, מתקני כושר ושבילי אופניים. מושלם לשקיעה.", "en": "Haifa's most popular beach with a long promenade, lawns, fitness stations and bike paths. Perfect for sunset.", "fr": "La plage la plus populaire de Haïfa : longue promenade, pelouses, agrès et pistes cyclables. Parfaite au coucher du soleil."},
+      "address": {"he": "דרך ההגנה, דרום חיפה", "en": "HaHagana Rd, South Haifa", "fr": "Route HaHagana, sud de Haïfa"},
+      "hours": {"he": "פתוח תמיד · מציל בעונת הרחצה", "en": "Always open · lifeguards in swimming season", "fr": "Toujours ouvert · surveillance en saison"}
+    },
+    {
+      "id": "f6", "category": "free", "price": "free", "rating": 4.1,
+      "lat": 32.8520, "lng": 35.0640, "added": "2026-11-19", "image": "", "link": "",
+      "name": {"he": "חוף וטיילת קריית ים", "en": "Kiryat Yam Beach Promenade", "fr": "Promenade de la plage de Kiryat Yam"},
+      "desc": {"he": "טיילת חוף רחבה בקריות עם מסלול הליכה ורכיבה לאורך המפרץ ונוף לכרמל מהצד השני.", "en": "A wide beachfront promenade in the Krayot with a walking and cycling path along the bay and views back to the Carmel.", "fr": "Large promenade en bord de mer dans les Krayot, chemin piéton et cyclable le long de la baie avec vue sur le Carmel."},
+      "address": {"he": "טיילת קריית ים", "en": "Kiryat Yam promenade", "fr": "Promenade de Kiryat Yam"},
+      "hours": {"he": "פתוח תמיד", "en": "Always open", "fr": "Toujours ouvert"}
+    },
+
+    {
+      "id": "e1", "category": "events", "price": "free", "rating": 4.8,
+      "lat": 32.8165, "lng": 34.9925, "added": "2026-11-20", "image": "",
+      "start": "2026-12-10T10:00", "end": "2026-12-20T23:00",
+      "link": "https://www.maariv.co.il/lifestyle/travel/article-1389228",
+      "name": {"he": "פסטיבל \"החג של החגים\" – השנה ה-33", "en": "Holiday of Holidays Festival – 33rd edition", "fr": "Festival « Fête des fêtes » – 33e édition"},
+      "desc": {"he": "חגיגת חנוכה, חג המולד והרב-תרבותיות של חיפה: מופעים, תהלוכת חג המולד, קרקסים, אוכל של הוואדי ופעילויות למשפחות.", "en": "Haifa's celebration of Hanukkah, Christmas and multiculturalism: shows, a Christmas parade, circus acts, Wadi food and family activities.", "fr": "La fête de Hanoukka, de Noël et du multiculturalisme à Haïfa : spectacles, défilé de Noël, cirque, cuisine du Wadi et activités familiales."},
+      "address": {"he": "ואדי ניסנאס והמושבה הגרמנית", "en": "Wadi Nisnas & German Colony", "fr": "Wadi Nisnas et Colonie allemande"},
+      "hours": {"he": "10–20 בדצמבר 2026 · רוב האירועים חינם", "en": "Dec 10–20, 2026 · most events free", "fr": "10–20 déc. 2026 · la plupart des événements gratuits"}
+    },
+    {
+      "id": "e2", "category": "events", "price": "free", "rating": 4.6,
+      "lat": 32.8205, "lng": 34.9915, "added": "2026-11-21", "image": "",
+      "start": "2026-12-06T17:00", "end": "2027-01-01T23:59",
+      "link": "https://www.maariv.co.il/lifestyle/travel/article-1389228",
+      "name": {"he": "הדלקת אורות החג במושבה הגרמנית", "en": "Festive Lights in the German Colony", "fr": "Illuminations de la Colonie allemande"},
+      "desc": {"he": "קישוטי האור בכיכר המגינים יודלקו ב-6 בדצמבר ויאירו את השכונה ומוקדים נוספים בעיר עד 1 בינואר.", "en": "The light decorations at Kikar HaMeginim are switched on Dec 6 and light up the neighborhood and other spots in the city until Jan 1.", "fr": "Les illuminations de la place HaMeginim s'allument le 6 décembre et éclairent le quartier et la ville jusqu'au 1er janvier."},
+      "address": {"he": "כיכר המגינים, המושבה הגרמנית", "en": "Kikar HaMeginim, German Colony", "fr": "Place HaMeginim, Colonie allemande"},
+      "hours": {"he": "6.12.2026 – 1.1.2027 · בערבים", "en": "Dec 6, 2026 – Jan 1, 2027 · evenings", "fr": "6 déc. 2026 – 1er janv. 2027 · le soir"}
+    },
+    {
+      "id": "e3", "category": "events", "price": "₪₪", "rating": 4.5,
+      "lat": 32.8100, "lng": 34.9950, "added": "2026-11-15", "image": "",
+      "start": "2026-12-26T20:00", "end": "2026-12-26T22:00",
+      "link": "https://www.israelichamberproject.org/event-details/on-the-verge-dec-26-2026-haifa-israel",
+      "name": {"he": "האנסמבל הקאמרי הישראלי – \"On the Verge\"", "en": "Israeli Chamber Project – \"On the Verge\"", "fr": "Israeli Chamber Project – « On the Verge »"},
+      "desc": {"he": "קונצרט קאמרי: ארבעה מלחינים מהמאה ה-20, ארבעה עולמות מוזיקליים מרתקים.", "en": "Chamber concert: four 20th-century composers, four fascinating musical worlds.", "fr": "Concert de chambre : quatre compositeurs du XXe siècle, quatre univers musicaux fascinants."},
+      "address": {"he": "חיפה – מקום מדויק באתר ההפקה", "en": "Haifa – exact venue on the organizer's site", "fr": "Haïfa – lieu exact sur le site de l'organisateur"},
+      "hours": {"he": "שבת 26.12.2026 · 20:00", "en": "Sat Dec 26, 2026 · 20:00", "fr": "sam. 26 déc. 2026 · 20h"}
+    },
+    {
+      "id": "e4", "category": "events", "price": "₪₪₪", "rating": 4.8,
+      "lat": 32.8032, "lng": 34.9858, "added": "2026-11-10", "image": "",
+      "start": "2027-01-21T20:00", "end": "2027-01-21T22:00",
+      "link": "https://www.ipo.co.il/en/?p=62726",
+      "name": {"he": "התזמורת הפילהרמונית – גאלה חיפה 4", "en": "Israel Philharmonic – Haifa Gala 4", "fr": "Orchestre philharmonique d'Israël – Gala Haïfa 4"},
+      "desc": {"he": "עומר מאיר וולבר מנצח, הסופרן הילה באג'יו. חלק מסדרת הגאלה של העונה ה-90.", "en": "Omer Meir Wellber conducts, with soprano Hila Baggio. Part of the orchestra's 90th-season Haifa Gala series.", "fr": "Direction Omer Meir Wellber, avec la soprano Hila Baggio. Série Gala Haïfa de la 90e saison."},
+      "address": {"he": "אודיטוריום חיפה, שד' הנשיא (לוודא בכרטיס)", "en": "Haifa Auditorium, HaNassi Blvd (check ticket)", "fr": "Auditorium de Haïfa, bd HaNassi (voir le billet)"},
+      "hours": {"he": "חמישי 21.1.2027 · 20:00", "en": "Thu Jan 21, 2027 · 20:00", "fr": "jeu. 21 janv. 2027 · 20h"}
+    },
+    {
+      "id": "e5", "category": "events", "price": "₪₪₪", "rating": 4.8,
+      "lat": 32.8034, "lng": 34.9862, "added": "2026-11-10", "image": "",
+      "start": "2027-02-28T20:00", "end": "2027-02-28T22:00",
+      "link": "https://www.ipo.co.il/en/?p=62726",
+      "name": {"he": "התזמורת הפילהרמונית – גאלה חיפה 5", "en": "Israel Philharmonic – Haifa Gala 5", "fr": "Orchestre philharmonique d'Israël – Gala Haïfa 5"},
+      "desc": {"he": "טארמו פלטוקוסקי מנצח, בהשתתפות הסופרן חן רייס.", "en": "Tarmo Peltokoski conducts, featuring soprano Chen Reiss.", "fr": "Direction Tarmo Peltokoski, avec la soprano Chen Reiss."},
+      "address": {"he": "אודיטוריום חיפה, שד' הנשיא (לוודא בכרטיס)", "en": "Haifa Auditorium, HaNassi Blvd (check ticket)", "fr": "Auditorium de Haïfa, bd HaNassi (voir le billet)"},
+      "hours": {"he": "ראשון 28.2.2027 · 20:00", "en": "Sun Feb 28, 2027 · 20:00", "fr": "dim. 28 févr. 2027 · 20h"}
+    }
+  ]
+}
